@@ -4,7 +4,7 @@ import Header from "./Header"
 import data from "../assets/data.json"
 
 function App() {
-	const [listings, setListings] = useState(data)
+	const [listings] = useState(data)
 
 	return (
 		<div className='container'>
