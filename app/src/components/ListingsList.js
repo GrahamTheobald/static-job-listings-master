@@ -2,17 +2,35 @@ import React, { useState } from "react"
 import ActiveTags from "./ActiveTags"
 import Listing from "./Listing"
 
-export default function LintingsList({ listings }) {
+export const TagContext = React.createContext()
+
+export default function ListingsList({ listings }) {
 	const [activeTags, setActiveTags] = useState([])
+
+	function handleAddTag(tag) {
+		const _activeTags = [...activeTags]
+		if (_activeTags.includes(tag)) return
+		_activeTags.push(tag)
+		setActiveTags(_activeTags)
+	}
+	function handleDeleteTag(tag) {
+		const _activeTags = [...activeTags]
+		setActiveTags(_activeTags.filter((t) => t != tag))
+	}
+
 	const tags = activeTags.length > 0
 	let className = "listings"
 	className += tags ? " translate" : ""
 	return (
-		<div className={className}>
-			{activeTags.length > 0 && <ActiveTags tags={activeTags} />}
-			{listings.map((listing) => {
-				return <Listing key={listing.id} data={listing} />
-			})}
-		</div>
+		<TagContext.Provider value={{ handleAddTag }}>
+			<div className={className}>
+				{activeTags.length > 0 && (
+					<ActiveTags tags={activeTags} handleDelete={handleDeleteTag} />
+				)}
+				{listings.map((listing) => {
+					return <Listing key={listing.id} data={listing} />
+				})}
+			</div>
+		</TagContext.Provider>
 	)
 }

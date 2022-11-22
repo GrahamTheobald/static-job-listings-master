@@ -1,12 +1,19 @@
 import React from "react"
 import Tag from "./Tag"
 
-export default function ActiveTags({ tags }) {
+export default function ActiveTags({ tags, handleDelete }) {
 	return (
 		<div className='active-tags'>
 			<div className='active-tags__tags'>
 				{tags.map((tag, index) => {
-					return <Tag id={index} label={tag} button={true} />
+					return (
+						<Tag
+							id={index}
+							label={tag}
+							button={true}
+							handleDelete={handleDelete}
+						/>
+					)
 				})}
 			</div>
 			<p className='active-tags__clear'>Clear</p>

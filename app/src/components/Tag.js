@@ -1,12 +1,20 @@
 import React from "react"
 import remove from "../assets/images/icon-remove.svg"
 
-export default function Tag({ label, button = false }) {
+export default function Tag(props) {
+	const {
+		label,
+		handleDelete = () => null,
+		handleAdd = () => null,
+		button = false,
+	} = props
 	return (
 		<div className='tag'>
-			<div className='tag__label'>{label}</div>
+			<div onClick={() => handleAdd(label)} className='tag__label'>
+				{label}
+			</div>
 			{button && (
-				<div className='tag__button'>
+				<div onClick={() => handleDelete(label)} className='tag__button'>
 					<img src={remove} alt='remove tag' />
 				</div>
 			)}
