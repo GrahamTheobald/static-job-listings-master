@@ -24,6 +24,7 @@ export default function ListingsList({ listings }) {
 	const tags = activeTags.length > 0
 	let className = "listings"
 	className += tags ? " translate" : ""
+
 	return (
 		<TagContext.Provider value={{ handleAddTag }}>
 			<div className={className}>
@@ -34,9 +35,21 @@ export default function ListingsList({ listings }) {
 						handleClear={handleClearTags}
 					/>
 				)}
-				{listings.map((listing) => {
-					return <Listing key={listing.id} data={listing} />
-				})}
+				{listings
+					.filter((listing) => {
+						const listing_tags = [
+							...listing.languages,
+							...listing.tools,
+							listing.level,
+							listing.role,
+						]
+						return (
+							!tags || activeTags.some((at) => listing_tags.indexOf(at) >= 0)
+						)
+					})
+					.map((listing) => {
+						return <Listing key={listing.id} data={listing} />
+					})}
 			</div>
 		</TagContext.Provider>
 	)

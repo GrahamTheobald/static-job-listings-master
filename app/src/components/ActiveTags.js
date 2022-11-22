@@ -8,7 +8,7 @@ export default function ActiveTags({ tags, handleDelete, handleClear }) {
 				{tags.map((tag, index) => {
 					return (
 						<Tag
-							id={index}
+							key={index}
 							label={tag}
 							button={true}
 							handleDelete={handleDelete}
