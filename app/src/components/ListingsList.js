@@ -15,7 +15,7 @@ export default function ListingsList({ listings }) {
 	}
 	function handleDeleteTag(tag) {
 		const _activeTags = [...activeTags]
-		setActiveTags(_activeTags.filter((t) => t != tag))
+		setActiveTags(_activeTags.filter((t) => t !== tag))
 	}
 	function handleClearTags() {
 		setActiveTags([])
