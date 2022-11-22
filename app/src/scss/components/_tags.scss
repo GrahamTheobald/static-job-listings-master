@@ -1,0 +1,35 @@
+@use "../abstracts/" as *;
+
+.tag {
+	display: flex;
+	align-items: center;
+	font-weight: 700;
+	width: min-content;
+	border-radius: 0.3rem;
+	overflow: hidden;
+	&__label {
+		color: $desaturatedDarkCyan;
+		background-color: $lightGrayishCyanBG;
+		padding: 0.4rem;
+		&:hover {
+			transition: 0.3s;
+			background-color: $desaturatedDarkCyan;
+			color: $lightGrayishCyanBG;
+			cursor: pointer;
+		}
+	}
+	&__button {
+		color: $lightGrayishCyanBG;
+		background-color: $desaturatedDarkCyan;
+		padding: 0.4rem;
+		height: 100%;
+		&:hover {
+			transition: 0.3s;
+			background-color: #000;
+			cursor: pointer;
+		}
+		img {
+			display: block;
+		}
+	}
+}

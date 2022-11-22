@@ -1,0 +1,18 @@
+@use "../abstracts/" as *;
+
+.container {
+	margin-inline: auto;
+	background-color: $lightGrayishCyanBG;
+	&__image {
+		height: 10rem;
+		background-color: $desaturatedDarkCyan;
+		background-image: url(../assets/images/bg-header-mobile.svg);
+		background-size: cover;
+	}
+}
+
+@media screen and (min-width: 600px) {
+	.container__image {
+		background-image: url(../assets/images/bg-header-desktop.svg);
+	}
+}

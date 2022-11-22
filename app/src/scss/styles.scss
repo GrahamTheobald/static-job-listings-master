@@ -1,0 +1,14 @@
+@use "abstracts" as *;
+@use "components" as c;
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+:root {
+	font-family: $fontFamily;
+}
