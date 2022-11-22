@@ -17,6 +17,9 @@ export default function ListingsList({ listings }) {
 		const _activeTags = [...activeTags]
 		setActiveTags(_activeTags.filter((t) => t != tag))
 	}
+	function handleClearTags() {
+		setActiveTags([])
+	}
 
 	const tags = activeTags.length > 0
 	let className = "listings"
@@ -25,7 +28,11 @@ export default function ListingsList({ listings }) {
 		<TagContext.Provider value={{ handleAddTag }}>
 			<div className={className}>
 				{activeTags.length > 0 && (
-					<ActiveTags tags={activeTags} handleDelete={handleDeleteTag} />
+					<ActiveTags
+						tags={activeTags}
+						handleDelete={handleDeleteTag}
+						handleClear={handleClearTags}
+					/>
 				)}
 				{listings.map((listing) => {
 					return <Listing key={listing.id} data={listing} />

@@ -1,7 +1,7 @@
 import React from "react"
 import Tag from "./Tag"
 
-export default function ActiveTags({ tags, handleDelete }) {
+export default function ActiveTags({ tags, handleDelete, handleClear }) {
 	return (
 		<div className='active-tags'>
 			<div className='active-tags__tags'>
@@ -16,7 +16,9 @@ export default function ActiveTags({ tags, handleDelete }) {
 					)
 				})}
 			</div>
-			<p className='active-tags__clear'>Clear</p>
+			<p onClick={() => handleClear()} className='active-tags__clear'>
+				Clear
+			</p>
 		</div>
 	)
 }
